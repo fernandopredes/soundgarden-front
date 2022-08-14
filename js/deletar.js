@@ -23,3 +23,18 @@ inputDescricao.value = descricao;
 inputData.value = new Date(data).toISOString();
 inputIngressos.value = ingressos;
 
+form.onsubmit = async (deletarEvento) => {
+  deletarEvento.preventDefault();
+
+  const metodoDeletar = requestOptions = {
+    method: 'DELETE',
+    headers: {
+        "Content-Type": "application/json",
+    }
+  }
+
+  fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`, requestOptions)
+        .then(response => response)
+        .then(result => { window.location.href = './admin.html'})
+        .catch(error => alert(`O evento ${nome} não foi excluido`));
+}

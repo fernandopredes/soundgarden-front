@@ -42,9 +42,9 @@ form.onsubmit = async (editarEvento) => {
       headers: {"Content-Type": "application/json"}
   }
 
-  const resposta = await fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`, metodoEditar) //enviar para o id do evento modificado
+        await fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`, metodoEditar) //enviar para o id do evento modificado
         .then(response => response) // resposta da promessa
         .then(result => {window.location.href = './admin.html';}) //retornar para a página anterior
-        .catch(error => console.log(error));
+        .catch(error => alert(`O evento ${nome} não foi criado`));
 
 }
