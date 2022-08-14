@@ -1,9 +1,14 @@
+//Pegar parâmetros da url
+const parametros = new URLSearchParams(window.location.search);
+//pegando id da url
+const id = parametros.get("id");
 
 
 const listarReservas = async() => {
-  const respostaAPI = await fetch('https://xp41-soundgarden-api.herokuapp.com/bookings')
+  const respostaAPI = await fetch(`https://xp41-soundgarden-api.herokuapp.com/bookings/event/${id}`)
   if (respostaAPI.status === 200) {
     const dado = await respostaAPI.json()
+    console.log(respostaAPI)
     return dado
   }
 }
