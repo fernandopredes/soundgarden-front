@@ -23,28 +23,18 @@ inputDescricao.value = descricao;
 inputData.value = new Date(data).toISOString();
 inputIngressos.value = ingressos;
 
-form.onsubmit = async (editarEvento) => {
-  editarEvento.preventDefault();
+form.onsubmit = async (deletarEvento) => {
+  deletarEvento.preventDefault();
 
-
-  const objeto = {
-    name: inputNome.value,
-    "poster": "link da imagem",
-    attractions: inputAtracoes.value.split(','),
-    description: inputDescricao.value,
-    scheduled: new Date(inputData.value).toISOString(),
-    number_tickets: inputIngressos.value,
+  const metodoDeletar = requestOptions = {
+    method: 'DELETE',
+    headers: {
+        "Content-Type": "application/json",
+    }
   }
 
-  const metodoEditar = {
-      method: 'PUT',
-      body: JSON.stringify(objeto),
-      headers: {"Content-Type": "application/json"}
-  }
-
-        await fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`, metodoEditar) //enviar para o id do evento modificado
-        .then(response => response) // resposta da promessa
-        .then(result => {window.location.href = './admin.html';}) //retornar para a página anterior
-        .catch(error => alert(`O evento ${nome} não foi criado`));
-
+  fetch(`https://xp41-soundgarden-api.herokuapp.com/events/${id}`, requestOptions)
+        .then(response => response)
+        .then(result => { window.location.href = './admin.html'})
+        .catch(error => alert(`O evento ${nome} não foi excluido`));
 }
