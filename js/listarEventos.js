@@ -21,9 +21,9 @@ const renderizarEventos = async(eventos) => {
     <td>${evento.name}</td>
     <td>${evento.attractions}</td>
         <td>
-            <a href="#" class="btn btn-dark">ver reservas</a>
-            <a href="#" class="btn btn-secondary">editar</a>
-            <a href="#" class="btn btn-danger">Excluir</a>
+        <a href="reservas.html?id=${evento._id}" class="btn btn-dark">ver reservas</a>
+        <a href="editar-evento.html?id=${evento._id}&nome=${evento.name}&descricao=${evento.description}&data=${evento.scheduled}&ingressos=${evento.number_tickets}&atracoes=${evento.attractions}"" class="btn btn-secondary">editar</a>
+        <a href="excluir-evento.html?id=${evento._id}&nome=${evento.name}&descricao=${evento.description}&data=${evento.scheduled}&ingressos=${evento.number_tickets}&atracoes=${evento.attractions}" class="btn btn-danger">Excluir</a>
         </td >`
 
     tabela.appendChild(novaLinha)
