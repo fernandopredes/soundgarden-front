@@ -40,7 +40,7 @@ function direcionaEventos(eventos){
         
         const btnReservar = setLista.appendChild(document.createElement('a'));
         btnReservar.textContent = "Reservar Ingresso";
-        btnReservar.setAttribute("href", "reservas.html");
+
         btnReservar.setAttribute("class", "btn btn-primary")
 
         

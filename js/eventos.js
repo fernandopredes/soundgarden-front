@@ -21,7 +21,6 @@ descricao.innerText = eventApi.description;
 
 const btnReservar = setLista.appendChild(document.createElement('a'));
 btnReservar.textContent = "Reservar Ingresso";
-btnReservar.setAttribute("href", "reservas.html");
 btnReservar.setAttribute("class", "btn btn-primary")
 
 const div = setLista.appendChild(document.createElement('div'));
@@ -40,6 +39,3 @@ fetch('https://xp41-soundgarden-api.herokuapp.com/events', {
 }).then(response => { return response.json() }
 ).then(eventos => direcionaEventos(eventos)
 ).catch(error => console.log(error));
-
-//Direciona Eventos na index
-
