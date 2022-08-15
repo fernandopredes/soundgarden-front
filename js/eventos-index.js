@@ -3,7 +3,7 @@ const listaEventos = document.getElementById("lista")
 
 //cria as tags e elementos no article
 function direcionaEventos(eventos){
-    eventos.forEach((eventApi)=>{
+    eventos.forEach(async (eventApi)=>{
 
 const setLista = listaEventos.appendChild(document.createElement('article'));
 setLista.className = 'evento card p-5 m-3';
@@ -43,5 +43,3 @@ fetch('https://xp41-soundgarden-api.herokuapp.com/events', {
 
 //Direciona Eventos na index
 
-// function ordenarEventos(eventos) {
-//     return eventos.filter
