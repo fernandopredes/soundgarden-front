@@ -44,4 +44,4 @@ fetch('https://xp41-soundgarden-api.herokuapp.com/events', {
 //Direciona Eventos na index
 
 // function ordenarEventos(eventos) {
-//     return eventos.filter
+//     return eventos.filter /
