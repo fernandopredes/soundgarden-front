@@ -63,7 +63,30 @@
                 </div>
             </div>
         </section>
-
+    <form>
+        <div id="modal-1">
+            <div class="modal-content">
+                 <span onclick="fechar()" class="fechar">×</span>
+                 <img src="img/Sound-logo (1).png" width="150" alt="">
+                 <h2 class="h2-index">Faça sua reserva</h2>
+    <form class="form-1">
+            <div class="inputs">
+                <label>Nome</label>
+                 <input type="text" class="form-control name-input">
+            </div>
+            <div class="inputs">
+                 <label>Email</label>
+                 <input type="text" class="form-control email-input">
+            </div>
+             <div class="inputs">
+                 <label>Lotação (Ingressos disponiveis)</label>
+                 <input type="number" class="form-control ingresso-input">
+            </div>
+             <div id="btns">
+        <button type="submit" class="btn btn-primary">enviar</button>
+        <button type="submit" class="btn btn-primary">cancelar</button>
+            </div>
+   </form>
     </main>
     <footer>
         <div class="container d-flex justify-content-center align-items-center">
@@ -82,30 +105,6 @@
             </nav>
         </div>
     </footer>
-
 </body>
 <script src="js/index.js"></script>
-
-<div id="modal-1" class="modal-container">
-                <div id="form" class="modal-content">
-                     <span onclick="close()" class="fechar">×</span>
-                     <img src="img/Sound-logo (1).png" width="150" alt="">
-                     <h2 class="h2-index">Faça sua reserva</h2>
-        <form class="form-1">
-                <div class="inputs">
-                    <label>Nome</label>
-                     <input type="text" class="form-control">
-                </div>
-                <div class="inputs">
-                     <label>Email</label>
-                     <input type="text" class="form-control">
-                </div>
-                 <div class="inputs">
-                     <label>Lotação (Ingressos disponiveis)</label>
-                     <input type="number" class="form-control">
-                </div>
-                 <div id="btns">
-            <button type="text" onclick="enviar()" class="btn envia btn-primary">enviar</button>
-                </div>
-
 </html>

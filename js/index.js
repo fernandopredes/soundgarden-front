@@ -43,6 +43,7 @@ function direcionaEventos(eventos){
         const btnReservar = setLista.appendChild(document.createElement('a'));
         btnReservar.textContent = "Reservar Ingresso";
         btnReservar.setAttribute("class", "btn btn-primary")
+        btnReservar.setAttribute("onclick", "acao()");
         btnReservar.classList.add('btn-reservar');
         
         const div = setLista.appendChild(document.createElement('div'));
@@ -50,7 +51,17 @@ function direcionaEventos(eventos){
 
             })
             return direcionaEventos
+
         }
+        function acao(){
+          let modal = document.querySelector('#modal-1');
+            modal.style.display = 'block';
+      }
+    
+      function fechar(){
+        let modal = document.querySelector('#modal-1');
+          modal.style.display = 'none';
+    }
 // Acessa a array e seleciona quais ítens quer carregar
 async function main() {
     try {
@@ -64,63 +75,9 @@ async function main() {
     } catch (error) {
     }
 
-    //abre modal
-    const modal = document.querySelector("#modal-1");
-
-    // const resposta = await fetch(`${BASE_URL}/bookings`, options);
-async function abreModal(id) {
-    modal.setAttribute("style", "display:flex");
-    const resposta = await fetch(`${BASE_URL}/events/${id}`, {
-      method: "GET",
-      redirect: "follow",
-      headers: { "Content-Type": "application/json" },
-    })
-// abreModal(resposta)
 
 }
 
-//fecha modal
-function fecharModal ()   {
-    modal.setAttribute("style", "none");
-}
-
-const close = document.querySelector("#form > span")
-close.onclick = () => {
-    fecharModal();
-  };
-
-  //abre modal após clicar em reservar ingresso
-const btn = document.querySelector(".btn")
-btn.onclick = () => {
-    abreModal();
-}
-
-//envia formulário.
-const formReserva = modal.querySelector("form");
-// formReserva.addEventListener("enviar", (event) => {
-//   event.preventDefault();
-
-  const body = {};
-
-  for (i = 0; i < formReserva.elements.length - 1; i++) {
-    const item = formReserva.elements[i];
-
-    body[item.name] = item.value;
-  }
-
-fetch(`${BASE_URL}/bookings`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  })
-    .then(() => {
-    //   alert("Reserva feita com sucesso");
-      modalReservaObj.hide();
-    })
-    .catch((error) => console.log(error.message));
 
 
-main();}
+main();
