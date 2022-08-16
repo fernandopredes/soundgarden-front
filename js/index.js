@@ -1,3 +1,5 @@
+const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
+
 // chama id do HTML
 const listaEventos = document.getElementById("lista")
 
@@ -40,9 +42,8 @@ function direcionaEventos(eventos){
         
         const btnReservar = setLista.appendChild(document.createElement('a'));
         btnReservar.textContent = "Reservar Ingresso";
-        btnReservar.setAttribute("href", "reservas.html");
         btnReservar.setAttribute("class", "btn btn-primary")
-
+        btnReservar.classList.add('btn-reservar');
         
         const div = setLista.appendChild(document.createElement('div'));
         div.setAttribute("id", "div-container");
@@ -62,6 +63,64 @@ async function main() {
         setEventListenerOnModalButton();
     } catch (error) {
     }
+
+    //abre modal
+    const modal = document.querySelector("#modal-1");
+
+    // const resposta = await fetch(`${BASE_URL}/bookings`, options);
+async function abreModal(id) {
+    modal.setAttribute("style", "display:flex");
+    const resposta = await fetch(`${BASE_URL}/events/${id}`, {
+      method: "GET",
+      redirect: "follow",
+      headers: { "Content-Type": "application/json" },
+    })
+// abreModal(resposta)
+
 }
 
-main();
+//fecha modal
+function fecharModal ()   {
+    modal.setAttribute("style", "none");
+}
+
+const close = document.querySelector("#form > span")
+close.onclick = () => {
+    fecharModal();
+  };
+
+  //abre modal após clicar em reservar ingresso
+const btn = document.querySelector(".btn")
+btn.onclick = () => {
+    abreModal();
+}
+
+//envia formulário.
+const formReserva = modal.querySelector("form");
+// formReserva.addEventListener("enviar", (event) => {
+//   event.preventDefault();
+
+  const body = {};
+
+  for (i = 0; i < formReserva.elements.length - 1; i++) {
+    const item = formReserva.elements[i];
+
+    body[item.name] = item.value;
+  }
+
+fetch(`${BASE_URL}/bookings`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  })
+    .then(() => {
+    //   alert("Reserva feita com sucesso");
+      modalReservaObj.hide();
+    })
+    .catch((error) => console.log(error.message));
+
+
+main();}
