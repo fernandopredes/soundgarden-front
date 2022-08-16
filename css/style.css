@@ -25,32 +25,79 @@ aside {
     background-color: #C2185B;
     border-color: #C2185B;
 }
+.modal-container{
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0, 0, 0,.5) ;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index:2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.modal-1{
+
+#modal-1{
     position: fixed;
     padding-top: 100px;
-    left: 30%;
     display: none;
     top: 0;
-    width: 550px;
-    z-index: 2000;  
+    width: 100%;
     animation: animate;
     animation-duration: 600ms;
+}
+
+@keyframes modal{
+    from{
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.mostrar .modal{
+    animation:modal .3s;
 }
 
 .modal-content {
     align-items: center;
     background-color: #fefefe;
+    width: 40%;
+    min-width: 300px;
+    border: 10px solid #C2185B;
+    box-shadow: 0 0 0 10px #fefefe;
     padding: 30px;
+    position: relative;
     
 }
 
 .fechar{
-    color: gray;
+    color: #C2185B;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 48px;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width:50px ;
+    height: 50px;
+    border-radius: 50px;
+    border: 0px solid #fefefe;
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0,.3);
+    
+
 }
 
+#modal1.mostrar{
+    display: absolute;
+
+}
 .inputs {
     margin-bottom: 20px;
 }
