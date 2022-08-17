@@ -20,7 +20,8 @@
         <section class="full d-flex justify-content-center align-items-center"
             style="background-color: #F8BBD0; color: #fff">
             <div class="text-center">
-                <h1>Adicione um banner maneiro aqui</h1>
+                <a onclick="acao()">
+                <video src="img/banner.mp4" autoplay loop class="banner"></video></a>
             </div>
         </section>
         <section class="full">
@@ -63,34 +64,35 @@
                 </div>
             </div>
         </section>
-    <form>
-        <div id="modal-1">
-            <div class="modal-content">
-                 <span onclick="fechar()" class="fechar">×</span>
-                 <img src="img/Sound-logo (1).png" width="150" alt="">
-                 <h2 class="h2-index">Faça sua reserva</h2>
-    <form class="form-1">
-            <div class="inputs">
-                <label>Nome</label>
-                 <input type="text" id="name" class="form-control name-input">
-            </div>
-            <div class="inputs">
-                 <label>Email</label>
-                 <input type="text" id="email" class="form-control email-input email">
-            </div>
-             <div class="inputs">
-                 <label>Lotação (Ingressos disponiveis)</label>
-                 <input type="number" id="quantidade" class="form-control">
-            </div>
-            <div class="inputs">
-                <label>ID do Evento:</label>
-               <input type="text" class="form-control" id="event-id" disabled>
-              </div>
-             <div id="btns">
-        <button type="submit" onclick="fechar()" class="btn btn-primary">enviar</button>
-        <button type="submit" onclick="reservarIngresso() "class="btn btn-primary">cancelar</button>
-            </div>
-   </form>
+        <form>
+            <div id="modal-1">
+                <div class="modal-content">
+                    <span onclick="fechar()" class="fechar">×</span>
+                    <img src="img/Sound-logo (1).png" width="150" alt="">
+                    <h2 class="h2-index">Faça sua reserva</h2>
+                    <form class="form-1">
+                        <div class="inputs">
+                            <label>Nome</label>
+                            <input type="text" id="name" class="form-control name-input">
+                        </div>
+                        <div class="inputs">
+                            <label>Email</label>
+                            <input type="text" id="email" class="form-control email-input email">
+                        </div>
+                        <div class="inputs">
+                            <label>Lotação (Ingressos disponiveis)</label>
+                            <input type="number" id="quantidade" class="form-control">
+                        </div>
+                        <div class="inputs">
+                            <label>ID do Evento:</label>
+                            <input type="text" class="form-control" id="event-id" disabled>
+                        </div>
+                        <div id="btns">
+                            <button type="submit" onclick="fechar()" class="btn btn-primary">enviar</button>
+                            <button type="submit" onclick="reservarIngresso() "
+                                class="btn btn-primary">cancelar</button>
+                        </div>
+                    </form>
     </main>
     <footer>
         <div class="container d-flex justify-content-center align-items-center">
@@ -111,4 +113,5 @@
     </footer>
 </body>
 <script src="js/index.js"></script>
+
 </html>

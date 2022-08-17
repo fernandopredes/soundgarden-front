@@ -134,3 +134,8 @@ footer nav ul li  {
     from{opacity: 1;}
     from{opacity: 0;}
 }
+
+.banner{
+    width: 80%;
+    cursor: pointer;
+}
