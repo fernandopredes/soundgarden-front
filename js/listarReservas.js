@@ -5,7 +5,7 @@ const id = parametros.get("id");
 
 
 const listarReservas = async() => {
-  const respostaAPI = await fetch(`https://xp41-soundgarden-api.herokuapp.com/bookings/event/${id}`)
+  const respostaAPI = await fetch(`https://xp41-soundgarden-api.herokuapp.com/bookings/`)
   if (respostaAPI.status === 200) {
     const dado = await respostaAPI.json()
     console.log(respostaAPI)
