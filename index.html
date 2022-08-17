@@ -72,19 +72,23 @@
     <form class="form-1">
             <div class="inputs">
                 <label>Nome</label>
-                 <input type="text" class="form-control name-input">
+                 <input type="text" id="name" class="form-control name-input">
             </div>
             <div class="inputs">
                  <label>Email</label>
-                 <input type="text" class="form-control email-input">
+                 <input type="text" id="email" class="form-control email-input email">
             </div>
              <div class="inputs">
                  <label>Lotação (Ingressos disponiveis)</label>
-                 <input type="number" class="form-control ingresso-input">
+                 <input type="number" id="quantidade" class="form-control">
             </div>
+            <div class="inputs">
+                <label>ID do Evento:</label>
+               <input type="text" class="form-control" id="event-id" disabled>
+              </div>
              <div id="btns">
-        <button type="submit" class="btn btn-primary">enviar</button>
-        <button type="submit" class="btn btn-primary">cancelar</button>
+        <button type="submit" onclick="fechar()" class="btn btn-primary">enviar</button>
+        <button type="submit" onclick="reservarIngresso() "class="btn btn-primary">cancelar</button>
             </div>
    </form>
     </main>
