@@ -14,7 +14,7 @@ const tresEventos = async () => {
 }
 // Cria funções para acessar os três últimos eventos e remove os passados
 function acessaEventoAPI(eventos) {
-    return eventos.sort((a, b) => { 
+    return eventos.sort((a, b) => {
         return new Date(a.scheduled) - new Date(b.scheduled) })
 }
 
@@ -28,24 +28,24 @@ function direcionaEventos(eventos){
     eventos.forEach((eventApi)=>{
         const setLista = listaEventos.appendChild(document.createElement('article'));
         setLista.className = 'evento card p-5 m-3';
-        
+
         const titulo = setLista.appendChild(document.createElement('h2'));
         const nomeEvento = eventApi.name;
         const dataEvento = eventApi.scheduled.substring(0,10).replaceAll('-','/')
         titulo.innerText = nomeEvento + '-' + dataEvento;
-        
+
         const atracoes = setLista.appendChild(document.createElement('h4'));
         atracoes.innerText = eventApi.attractions;
-        
+
         const descricao = setLista.appendChild(document.createElement('p'));
         descricao.innerText = eventApi.description;
-        
+
         const btnReservar = setLista.appendChild(document.createElement('a'));
         btnReservar.textContent = "Reservar Ingresso";
         btnReservar.setAttribute("class", "btn btn-primary")
         btnReservar.setAttribute("onclick", "acao()");
         btnReservar.classList.add('btn-reservar');
-        
+
         const div = setLista.appendChild(document.createElement('div'));
         div.setAttribute("id", "div-container");
 
@@ -57,13 +57,13 @@ function direcionaEventos(eventos){
           let modal = document.querySelector('#modal-1');
             modal.style.display = 'block';
       }
-    
+
       function fechar(){
         let modal = document.querySelector('#modal-1');
           modal.style.display = 'none';
     }
 
-const modalReserva = document.querySelector('#modal-1');   
+const modalReserva = document.querySelector('#modal-1');
 // Acessa a array e seleciona quais ítens quer carregar
 async function main() {
     try {
@@ -142,10 +142,10 @@ async function verReservas(self){
 
 }
 
-function divIndexOculta(e) { 
+function divIndexOculta(e) {
   if (e.matches)
       document.getElementsByClassName('col')[1].style.display = "none"
-  else 
+  else
       document.getElementsByClassName('col')[1].style.display = "block"
 }
 
