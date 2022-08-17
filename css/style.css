@@ -68,7 +68,7 @@ aside {
     align-items: center;
     background-color: #fefefe;
     width: 40%;
-    min-width: 300px;
+    min-width: 100px;
     border: 10px solid #C2185B;
     box-shadow: 0 0 0 10px #fefefe;
     padding: 30px;
@@ -81,8 +81,8 @@ aside {
     font-weight: bold;
     font-size: 48px;
     position: absolute;
-    top: -40px;
-    right: -40px;
+    top: -50px;
+    right: -30px;
     width:50px ;
     height: 50px;
     border-radius: 50px;

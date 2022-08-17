@@ -43,6 +43,7 @@ function direcionaEventos(eventos){
         const btnReservar = setLista.appendChild(document.createElement('a'));
         btnReservar.textContent = "Reservar Ingresso";
         btnReservar.setAttribute("class", "btn btn-primary")
+        btnReservar.setAttribute("onclick", "acao()");
         btnReservar.classList.add('btn-reservar');
         
         const div = setLista.appendChild(document.createElement('div'));
@@ -50,68 +51,102 @@ function direcionaEventos(eventos){
 
             })
             return direcionaEventos
+
         }
+        function acao(){
+          let modal = document.querySelector('#modal-1');
+            modal.style.display = 'block';
+      }
+    
+      function fechar(){
+        let modal = document.querySelector('#modal-1');
+          modal.style.display = 'none';
+    }
 
+const modalReserva = document.querySelector('#modal-1');   
+// Acessa a array e seleciona quais ítens quer carregar
+async function main() {
+    try {
+        const events = await tresEventos();
+        const orderedEvents = acessaEventoAPI(events);
+        const removedPastEvents = excluiAntigos(orderedEvents);
+        const threeNearestEvents = removedPastEvents.slice(0,13);
+        direcionaEventos(threeNearestEvents);
 
-//chama API
-
-fetch('https://xp41-soundgarden-api.herokuapp.com/events', {
-    "method": "GET",
-}).then(response => { return response.json() }
-).then(eventos => direcionaEventos(eventos)
-).catch(error => console.log(error));
-
-//Direciona Eventos na index
-
-async function abreModal(id) {
-    modal.setAttribute("style", "display:flex");
-    const resposta = await fetch(`${BASE_URL}/events/${id}`, {
-      method: "GET",
-      redirect: "follow",
-      headers: { "Content-Type": "application/json" },
-    })}
-
-function fecharModal ()   {
-    modal.setAttribute("style", "none");
+        setEventListenerOnModalButton();
+    } catch (error) {
+    }
 }
 
-const close = document.querySelector("#form > span")
+// seleciona os dados do modal para enviar a reserva.
+async function reservarIngressoModal() {
+  let inputNome = document.getElementById('nome').value
+  let inputEmail = document.getElementById('email').value
+  let inputLotacao = document.getElementById('quantidade').value
+  let inputID = document.getElementById('event-id').value
 
-close.onclick = () => {
-    fecharModal();
-  };
+  const postContent = {
+    "owner_name": inputNome,
+    "owner_email": inputEmail,
+    "number_tickets": inputLotacao,
+    "event_id": inputID
 
-const btn = document.querySelector(".btn")
-
-btn.onclick = () => {
-    abreModal();
-}
-
-// const reservarTicket = {
-//     owner_name: nome.value,
-//     owner_email: email.value,
-//     number_tickets: parseInt(ingresso.value),
-//     event_id: inputId.value,
-//   };
-
-//   const options = {
-//     method: "POST",
-//     body: JSON.stringify(reservarTicket),
-//     headers: { "Content-Type": "application/json" },
-//     redirect: "follow",
-//   };
-
-
-//   const conteudoResposta = await resposta.json();
-//   console.log(conteudoResposta);
-
-  if (resposta.status == 201) {
-    alert("Reserva realizada com sucesso");
-
-    fecharModal();
   }
 
+  const fetchResultado = await fetch("https://xp41-soundgarden-api.herokuapp.com/bookings", {
+    method: 'POST',
+    body: JSON.stringify(postContent),
+    headers: {
+        "Content-type": "application/json"
+    }
+    })
+    .then(function (response) {
+      if (response.status == 201){
+        window.alert("Ingresso reservado, curta o show!")
+        return console.log(response.json())
+      }
+      else
+        window.alert("Deu ruim, tente novamente por favor!")
+
+})
+  .catch(function (err) {
+      return console.log(err.message)
+  })
+  reservarIngressoModal();
+}
+
+/* */
+async function verReservas(self){
+    let id = self.dataset.event_id
+    let todasReservas = self.dataset.todasReservas
+    const fetchResutlado = await fetch(`https://xp41-soundgarden-api.herokuapp.com/bookings/event/${id}`, {
+      method: 'GET',
+      headers: {
+          "Content-type": "application/json"
+      }
+  })
+  .then(function (response) {
+      return response.json()
+  })
+  .then(function (json) {
+      var reservasEfetuadas = 0
+
+      for (var i = 0; i < json.length; i++) {
+          reservasEfetuadas += Number(json[i].number_tickets)
+      }
+      document.getElementById('reservasEfetuadas').value = reservasEfetuadas
+      document.getElementById('reservasRestantes').value = reservasTotais
+      document.getElementById('event-id').value = id
+  })
+  verReservas();
+
+}
+
+function divIndexOculta(e) { 
+  if (e.matches)
+      document.getElementsByClassName('col')[1].style.display = "none"
+  else 
+      document.getElementsByClassName('col')[1].style.display = "block"
+}
 
 main();
-
-
