@@ -138,3 +138,7 @@ footer nav ul li  {
 .carousel-item img{
     cursor: pointer;
 }
+
+.text-center{
+    width: 70%;
+}
