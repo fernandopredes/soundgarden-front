@@ -135,7 +135,6 @@ footer nav ul li  {
     from{opacity: 0;}
 }
 
-.banner{
-    width: 80%;
+.carousel-item img{
     cursor: pointer;
 }
