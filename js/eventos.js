@@ -70,7 +70,7 @@ async function main() {
         const events = await tresEventos();
         const orderedEvents = acessaEventoAPI(events);
         const removedPastEvents = excluiAntigos(orderedEvents);
-        const threeNearestEvents = removedPastEvents.slice(0,13);
+        const threeNearestEvents = removedPastEvents;
         direcionaEventos(threeNearestEvents);
 
         setEventListenerOnModalButton();
